@@ -1,28 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto - Gabriel Park</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
-
 <body>
-    <header class="header">
-        <div class="container">
-            <h1>Gabriel Park</h1>
-            <p>Técnico en Mecatrónica & Desarrollador</p>
-        </div>
-    </header>
-
-    <nav class="nav">
-        <div class="container">
-            <a href="index.html" class="nav-link">Inicio</a>
-            <a href="certificados.html" class="nav-link">Certificados</a>
-            <a href="contacto.html" class="nav-link active">Contacto</a>
-        </div>
-    </nav>
 
     <main class="main">
         <div class="container">
@@ -32,43 +16,17 @@
                 <!-- Información de Contacto -->
                 <div class="contact-info">
                     <h3>Información de Contacto</h3>
-
-                    <div class="contact-item">
-                        <div class="icon">📧</div>
-                        <div>
-                            <strong>Email</strong>
-                            <p><a href="mailto:leirbagpkwor@outlook.com" class="email-link">leirbagpkwor@outlook.com</a>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="icon">📱</div>
-                        <div>
-                            <strong>Teléfono</strong>
-                            <p><a href="tel:+595971523770" class="phone-link">(+595) 971 523 770</a></p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="icon">📍</div>
-                        <div>
-                            <strong>Ubicación</strong>
-                            <p>Asunción, Paraguay</p>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Formulario de Contacto -->
                 <div class="contact-form">
                     <h3>CONTACTO</h3>
-                    <div id="success-message"
-                        style="display: none; background: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                    
+                    <div id="success-message" style="display: none; background: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
                         ¡Mensaje enviado correctamente! Te responderé pronto.
                     </div>
-
-                    <div id="error-message"
-                        style="display: none; background: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                    
+                    <div id="error-message" style="display: none; background: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
                     </div>
 
                     <form id="contactForm">
@@ -99,11 +57,6 @@
         </div>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Gabriel Park. Todos los derechos reservados.</p>
-        </div>
-    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -111,123 +64,69 @@
             const successMessage = document.getElementById('success-message');
             const errorMessage = document.getElementById('error-message');
 
-            // IMPORTANTE: Cambia 'mode: 'cors'' por 'mode: 'no-cors'' 
-            // y ajusta la forma de manejar la respuesta
-            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxiUpMmK3_eynA1XN-_vOLjngT04i6s0omwITbeF_Dich6vqRZjPz-Lv7plFtmJeNWq/exec';
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/a/macros/fiuna.edu.py/s/AKfycbxiUpMmK3_eynA1XN-_vOLjngT04i6s0omwITbeF_Dich6vqRZjPz-Lv7plFtmJeNWq/exec';
 
-            form.addEventListener('submit', async function (event) {
+            form.addEventListener('submit', function (event) {
                 event.preventDefault();
 
-                // Validación básica
-                const nombre = document.getElementById('nombre').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const mensaje = document.getElementById('mensaje').value.trim();
-
-                if (!nombre || !email || !mensaje) {
-                    showError('Por favor completa todos los campos obligatorios (*)');
-                    return;
-                }
-
-                if (!validateEmail(email)) {
-                    showError('Por favor ingresa un email válido');
-                    return;
-                }
-
                 const submitBtn = form.querySelector('.btn');
-                const originalText = submitBtn.textContent;
-                submitBtn.textContent = 'Enviando...';
                 submitBtn.disabled = true;
+                submitBtn.textContent = 'Enviando...';
 
                 // Ocultar mensajes anteriores
                 successMessage.style.display = 'none';
                 errorMessage.style.display = 'none';
 
-                const formData = {
-                    nombre: nombre,
-                    email: email,
-                    asunto: document.getElementById('asunto').value || 'Mensaje del Portfolio - Gabriel Park',
-                    mensaje: mensaje,
-                    fecha: new Date().toLocaleString('es-PY')
-                };
+                const formData = new FormData(form);
+                
+                const params = new URLSearchParams();
+                params.append('nombre', document.getElementById('nombre').value);
+                params.append('email', document.getElementById('email').value);
+                params.append('asunto', document.getElementById('asunto').value || 'Mensaje del Portfolio');
+                params.append('mensaje', document.getElementById('mensaje').value);
+                
+                const url = `${GOOGLE_SCRIPT_URL}?${params.toString()}`;
 
-                try {
-                    // IMPORTANTE: Usar 'no-cors' y FormData en lugar de JSON
-                    const formDataToSend = new FormData();
-                    formDataToSend.append('data', JSON.stringify(formData));
-
-                    const response = await fetch(GOOGLE_SCRIPT_URL, {
-                        method: 'POST',
-                        mode: 'no-cors', // Cambiado a 'no-cors'
-                        body: formDataToSend
+                // Método 1: Usando fetch con GET (más simple)
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            showSuccess();
+                            form.reset();
+                        } else {
+                            showError(data.error || 'Error al enviar el mensaje');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        showError('Error de conexión. Usa el email directamente: leirbagpkper@outlook.com');
+                    })
+                    .finally(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Enviar Mensaje';
                     });
-
-                    // Con 'no-cors' no podemos leer la respuesta, pero asumimos éxito
-                    // si no hay error en la petición
-                    showSuccess();
-
-                    // Resetear formulario
-                    form.reset();
-
-                    // Ocultar formulario temporalmente
-                    form.style.display = 'none';
-
-                } catch (error) {
-                    console.error('Error:', error);
-                    showError('Error de conexión. Por favor, intenta de nuevo o usa el email directamente: ' + error.message);
-                } finally {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }
             });
 
             function showSuccess() {
                 successMessage.style.display = 'block';
-                successMessage.textContent = '¡Mensaje enviado correctamente! Te responderé pronto.';
-
-                // Restaurar formulario después de 5 segundos
-                setTimeout(function () {
-                    form.style.display = 'block';
+                errorMessage.style.display = 'none';
+                
+                setTimeout(() => {
                     successMessage.style.display = 'none';
                 }, 5000);
             }
 
             function showError(message) {
-                errorMessage.style.display = 'block';
                 errorMessage.textContent = message;
-
-                setTimeout(function () {
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                
+                setTimeout(() => {
                     errorMessage.style.display = 'none';
                 }, 5000);
-            }
-
-            function validateEmail(email) {
-                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return re.test(email);
-            }
-
-            // Función alternativa usando el método GET (a veces funciona mejor)
-            function sendViaGet(formData) {
-                const params = new URLSearchParams();
-                params.append('nombre', formData.nombre);
-                params.append('email', formData.email);
-                params.append('asunto', formData.asunto);
-                params.append('mensaje', formData.mensaje);
-
-                const url = `${GOOGLE_SCRIPT_URL}?${params.toString()}`;
-
-                // Usar un iframe para evitar problemas CORS
-                const iframe = document.createElement('iframe');
-                iframe.style.display = 'none';
-                iframe.src = url;
-                document.body.appendChild(iframe);
-
-                setTimeout(() => {
-                    document.body.removeChild(iframe);
-                    showSuccess();
-                }, 1000);
             }
         });
     </script>
 </body>
-
 </html>
