@@ -37,7 +37,7 @@
                         <div class="icon">📧</div>
                         <div>
                             <strong>Email</strong>
-                            <p><a href="mailto:leirbagpkwor@outlook.com" class="email-link">leirbagpkwor@outlook.com</a>
+                            <p><a href="mailto:leirbagpkper@outlook.com" class="email-link">leirbagpkper@outlook.com</a>
                             </p>
                         </div>
                     </div>
@@ -62,17 +62,17 @@
                 <!-- Formulario de Contacto -->
                 <div class="contact-form">
                     <h3>CONTACTO</h3>
-
                     <div id="success-message"
                         style="display: none; background: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
                         ¡Mensaje enviado correctamente! Te responderé pronto.
                     </div>
 
-                    <div id="error-message"
-                        style="display: none; background: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-                    </div>
+                    <form id="contact-form" action="https://formspree.io/f/xwpgbkzj" method="POST">
+                        <input type="hidden" name="_subject" value="Nuevo mensaje del Portfolio - Gabriel Park">
+                        <input type="hidden" name="_language" value="es">
+                        <input type="hidden" name="_replyto" value="leirbagpkper@outlook.com">
+                        <input type="text" name="_gotcha" style="display:none">
 
-                    <form id="contactForm">
                         <div class="form-group">
                             <label for="nombre">Nombre completo *</label>
                             <input type="text" id="nombre" name="nombre" required>
@@ -85,7 +85,7 @@
 
                         <div class="form-group">
                             <label for="asunto">Asunto</label>
-                            <input type="text" id="asunto" name="asunto" value="">
+                            <input type="text" id="asunto" name="asunto">
                         </div>
 
                         <div class="form-group">
@@ -95,11 +95,6 @@
 
                         <button type="submit" class="btn">Enviar Mensaje</button>
                     </form>
-
-                    <p style="font-size: 12px; color: #666; margin-top: 10px;">
-                        Si tienes problemas con el formulario, envía un email directamente a
-                        <a href="mailto:leirbagpkpwor@outlook.com">leirbagpkwor@outlook.com</a>
-                    </p>
                 </div>
             </div>
         </div>
@@ -113,161 +108,24 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('contactForm');
+            const form = document.getElementById('contact-form');
             const successMessage = document.getElementById('success-message');
-            const errorMessage = document.getElementById('error-message');
-
-            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxHiCTVcdDaZSJjWuRfR2itOnPrMXx-9Y264OANFYMxfaKJQ3HWlXrwcexiz-tJgR3__Q/exec';
 
             form.addEventListener('submit', function (event) {
+
                 event.preventDefault();
 
-                // Validar campos
-                const nombre = document.getElementById('nombre').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const mensaje = document.getElementById('mensaje').value.trim();
 
-                if (!nombre || !email || !mensaje) {
-                    showError('Por favor completa todos los campos obligatorios (*)');
-                    return;
-                }
-
-                if (!validateEmail(email)) {
-                    showError('Por favor ingresa un email válido');
-                    return;
-                }
-
-                // Cambiar estado del botón
-                const submitBtn = form.querySelector('.btn');
-                const originalText = submitBtn.textContent;
-                submitBtn.textContent = 'Enviando...';
-                submitBtn.disabled = true;
-
-                // Ocultar mensajes anteriores
-                successMessage.style.display = 'none';
-                errorMessage.style.display = 'none';
-
-                // Preparar datos
-                const formData = {
-                    nombre: nombre,
-                    email: email,
-                    asunto: document.getElementById('asunto').value,
-                    mensaje: mensaje,
-                    fecha: new Date().toLocaleString('es-PY'),
-                    origen: 'Portfolio Web'
-                };
-
-                // Enviar usando GET (más compatible)
-                const params = new URLSearchParams();
-                for (const key in formData) {
-                    params.append(key, formData[key]);
-                }
-
-                const url = `${GOOGLE_SCRIPT_URL}?${params.toString()}`;
-
-                // Usar fetch
-                fetch(url, {
-                    method: 'GET',
-                    mode: 'no-cors' // Usar no-cors para evitar problemas
-                })
-                    .then(() => {
-
-                        showSuccess();
-                        form.reset();
-
-                        sendEmailBackup(formData);
-                    })
-                    .catch(error => {
-                        console.error('Error en fetch:', error);
-
-                        sendViaIframe(url);
-                    })
-                    .finally(() => {
-                        submitBtn.textContent = originalText;
-                        submitBtn.disabled = false;
-                    });
-            });
-
-            function showSuccess() {
-                successMessage.textContent = '¡Mensaje enviado correctamente! Te responderé pronto.';
                 successMessage.style.display = 'block';
-                errorMessage.style.display = 'none';
-
-                setTimeout(() => {
-                    successMessage.style.display = 'none';
-                }, 5000);
-            }
-
-            function showError(message) {
-                errorMessage.textContent = message;
-                errorMessage.style.display = 'block';
-                successMessage.style.display = 'none';
-
-                setTimeout(() => {
-                    errorMessage.style.display = 'none';
-                }, 5000);
-            }
-
-            function validateEmail(email) {
-                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return re.test(email);
-            }
+                form.style.display = 'none';
 
 
-            function sendViaIframe(url) {
-                const iframe = document.createElement('iframe');
-                iframe.style.display = 'none';
-                iframe.src = url;
-                document.body.appendChild(iframe);
-
-                setTimeout(() => {
-                    document.body.removeChild(iframe);
-                    showSuccess();
-                    form.reset();
-                }, 2000);
-            }
-
-
-            function sendEmailBackup(data) {
-                const subject = encodeURIComponent(data.asunto);
-                const body = encodeURIComponent(
-                    `Nombre: ${data.nombre}
-Email: ${data.email}
-
-Mensaje:
-${data.mensaje}
-
----
-Enviado desde el formulario de contacto`
-                );
-
-
-                const mailtoLink = `mailto:leirbagpkwor@outlook.com?subject=${subject}&body=${body}`;
-
-
-                console.log('Enlace de respaldo:', mailtoLink);
-            }
-
-
-            function testScript() {
-                const testUrl = `${GOOGLE_SCRIPT_URL}?test=true`;
-                fetch(testUrl)
-                    .then(response => response.text())
-                    .then(text => {
-                        console.log('Respuesta del script:', text);
-                        if (text.includes('success')) {
-                            showSuccess();
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error probando script:', error);
-                        showError('El script no está respondiendo. Usa el email directamente.');
-                    });
-            }
-
+                setTimeout(function () {
+                    form.submit();
+                }, 500);
+            });
         });
     </script>
 </body>
 
 </html>
-
