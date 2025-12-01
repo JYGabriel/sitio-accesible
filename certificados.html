@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificados - Gabriel Park</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Gabriel Park</h1>
+            <p>Técnico en Mecatrónica & Desarrollador</p>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="container">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="certificados.html" class="nav-link active">Certificados</a>
+            <a href="contacto.html" class="nav-link">Contacto</a>
+        </div>
+    </nav>
+
+    <main class="main">
+        <div class="container">
+            <h2 class="section-title">Mi Historia de Certificaciones</h2>
+            <p class="section-subtitle">Haz clic en un año para ver los certificados, luego haz clic en un certificado
+                para ver los detalles</p>
+
+            <div id="certificateModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal()">&times;</span>
+                    <div id="modalImageContainer">
+                        <img id="modalImage" src="" alt="Certificado">
+                    </div>
+                    <div id="modalDescription"></div>
+                </div>
+            </div>
+
+            <!-- Timeline Interactivo -->
+            <div class="timeline-section">
+                <div class="timeline">
+                    <!-- Línea central -->
+                    <div class="timeline-line"></div>
+
+                    <!-- 2011 -->
+                    <div class="timeline-item">
+                        <div class="timeline-year" onclick="toggleCertificates(2011)">
+                            2011
+                            <div class="year-count">1 certificado</div>
+                        </div>
+                        <div class="certificates-list" id="certificates-2011">
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Yamaha Grade Examination', 'imagenes/Certificados_Diplomas/011_certificado_drumnsGrado9.jpg', 'Certificado de conclusión del grado 9 como baterista - Julio 2011')">
+                                <i class="fas fa-drum"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Yamaha Grade Examination</h4>
+                                    <p>Certificado de conclusión del grado 9 como baterista</p>
+                                    <span class="cert-date">Julio 2011</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 2012 -->
+                    <div class="timeline-item">
+                        <div class="timeline-year" onclick="toggleCertificates(2012)">
+                            2012
+                            <div class="year-count">1 certificado</div>
+                        </div>
+                        <div class="certificates-list" id="certificates-2012">
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('2do Ciclo de Educación Escolar Básica', 'imagenes/Certificados_Diplomas/012_certificado_2doCiclo.jpg', 'Certificado de conclusión del 2do Ciclo - Diciembre 2012')">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div class="certificate-item-content">
+                                    <h4>2do Ciclo de Educación Escolar Básica</h4>
+                                    <p>Certificado de conclusión del 2do Ciclo</p>
+                                    <span class="cert-date">Diciembre 2012</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 2013 -->
+                    <div class="timeline-item">
+                        <div class="timeline-year" onclick="toggleCertificates(2013)">
+                            2013
+                            <div class="year-count">1 certificado</div>
+                        </div>
+                        <div class="certificates-list" id="certificates-2013">
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Mejor Empresa de 7mo grado', 'imagenes/Certificados_Diplomas/013_certificado_MejorEmpresa.jpg', '3er puesto como empresa Avena Milk S.R.L. - Noviembre 2013')">
+                                <i class="fas fa-trophy"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Mejor Empresa de 7mo grado</h4>
+                                    <p>3er puesto como empresa Avena Milk S.R.L.</p>
+                                    <span class="cert-date">Noviembre 2013</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 2014 -->
+                    <div class="timeline-item">
+                        <div class="timeline-year" onclick="toggleCertificates(2014)">
+                            2014
+                            <div class="year-count">1 cert + 1 diploma</div>
+                        </div>
+                        <div class="certificates-list" id="certificates-2014">
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Diploma Técnico de Computadoras', 'imagenes/Certificados_Diplomas/014_diploma_tecticoComputadorasMonitoresImpresorasRedes.jpg', 'Diploma por aprobación del curso de Técnico de Computadoras, Monitores, Impresoras y Redes - Diciembre 2014')">
+                                <i class="fas fa-desktop"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Diploma Técnico de Computadoras</h4>
+                                    <p>Diploma por aprobacion del curso de Tecnico de Computadoras, Monitores,
+                                        Impresoras y Redes</p>
+                                    <span class="cert-date">Diciembre de 2014</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Técnico de Computadoras', 'imagenes/Certificados_Diplomas/014_certificado_tecticoComputadorasMonitoresImpresorasRedes.jpg', 'Certificado por la participación del curso de Técnico de Computadoras, Monitores, Impresoras y Redes - Diciembre 2014')">
+                                <i class="fas fa-desktop"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Técnico de Computadoras</h4>
+                                    <p>Certificado por la participacion del curso de Tecnico de Computadoras, Monitores,
+                                        Impresoras y Redes</p>
+                                    <span class="cert-date">Diciembre de 2014</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 2015 -->
+                    <div class="timeline-item">
+                        <div class="timeline-year" onclick="toggleCertificates(2015)">
+                            2015
+                            <div class="year-count">2 cert + 2 diplomas</div>
+                        </div>
+                        <div class="certificates-list" id="certificates-2015">
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Diploma Diseño de Páginas Web: WEBMASTER', 'imagenes/Certificados_Diplomas/015_diploma_webmaster.jpg', 'Diploma por aprobación del curso de DISEÑO DE PÁGINAS WEB: WEBMASTER - Diciembre 2015')">
+                                <i class="fas fa-laptop" style="color: #636E72; font-size: 24px; margin-left: 0px;"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Diploma Diseño de Páginas Web: WEBMASTER</h4>
+                                    <p>Diploma por aprobacion del curso de DISEÑO DE PAGINAS WEB: WEBMASTER</p>
+                                    <span class="cert-date">Diciembre 2015</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Certificado Diseño de Páginas Web: WEBMASTER', 'imagenes/Certificados_Diplomas/015_certificado_webmaster.jpg', 'Certificado de participación del curso de DISEÑO DE PÁGINAS WEB: WEBMASTER - Diciembre 2015')">
+                                <i class="fas fa-laptop" style="color: #636E72; font-size: 24px; margin-left: 0px;"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Certificado Diseño de Páginas Web: WEBMASTER</h4>
+                                    <p>Certificado de participacion del curso de DISEÑO DE PAGINAS WEB: WEBMASTER</p>
+                                    <span class="cert-date">Diciembre 2015</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Diploma Nivel de Educación Escolar Básica', 'imagenes/Certificados_Diplomas/015_diploma_EscolarBasica.jpg', 'Diploma por aprobación de los nueve grados del Nivel de Educación Escolar Básica - Diciembre 2015')">
+                                <i class="fas fa-school" style="color: #3498db; font-size: 24px;"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Diploma Nivel de Educación Escolar Básica</h4>
+                                    <p>Diploma por aprobacion de los nueve grados del Nivel de Educación Escolar Básica
+                                    </p>
+                                    <span class="cert-date">Diciembre de 2015</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Mejor Compañero', 'imagenes/Certificados_Diplomas/015_certificado_MejorCompanero.jpg', 'Certificado de Reconocimiento como Mejor Compañero otorgado por el colegio Sagrado Corazón De Jesús SALESIANITO - Diciembre 2015')">
+                                <i class="fas fa-school" style="color: #3498db; font-size: 24px;"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Mejor Compañero</h4>
+                                    <p>Certificado de Reconocimiento como Mejor Compañero otorgado por el colegio
+                                        Sagrado Corazon De Jesus SALESIANITO</p>
+                                    <span class="cert-date">Diciembre de 2015</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 2016 -->
+                    <div class="timeline-item">
+                        <div class="timeline-year" onclick="toggleCertificates(2016)">
+                            2016
+                            <div class="year-count">3 certificados</div>
+                        </div>
+                        <div class="certificates-list" id="certificates-2016">
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('EXPOTEC - SALE 2017', 'imagenes/Certificados_Diplomas/016_reconocimiento-Expotec.jpg', 'Reconocimiento de participación en la EXPOTEC SALE 2016 - Octubre de 2016')">
+                                <i class="fas fa-medal"></i>
+                                <div class="certificate-item-content">
+                                    <h4>EXPOTEC - SALE 2017</h4>
+                                    <p>Reconocimiento de participacion en la EXPOTEC SALE 2016</p>
+                                    <span class="cert-date">Octubre de 2016</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Seguridad Industrial y Salud Ocupacional', 'imagenes/Certificados_Diplomas/016_certificado_SeguridadIndustrialYSaludOcupacional.jpg', 'Certificado por participación del Seminario de Seguridad Industrial y Salud Ocupacional - Septiembre de 2016')">
+                                <i class="fas fa-hospital"
+                                    style="color: #3498db; font-size: 24px; margin-left: 0px;"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Seguridad Industrial y Salud Ocupacional</h4>
+                                    <p>Certificado por participacion del Seminario de Seguridad Industrial y Salud
+                                        Ocupacional</p>
+                                    <span class="cert-date">Septiembre de 2016</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Conferencia sobre Paneles Solares', 'imagenes/Certificados_Diplomas/016_certificado_celdasFotovoltaicas.jpg', 'Reconocimiento de participación de la conferencia Teórica Práctica sobre celdas fotovoltaicas y sus componentes - Septiembre de 2016')">
+                                <i class="fas fa-bolt"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Conferencia sobre Paneles Solares</h4>
+                                    <p>Reconocimiento de participacion de la conferencia Teorica Practica sobre celdas
+                                        fotovoltaicas y sus componentes</p>
+                                    <span class="cert-date">Septiembre de 2016</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 2017 -->
+                    <div class="timeline-item">
+                        <div class="timeline-year" onclick="toggleCertificates(2017)">
+                            2017
+                            <div class="year-count">5 certificados</div>
+                        </div>
+                        <div class="certificates-list" id="certificates-2017">
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('VEX VRC LNR Campeón de la 4ta Fecha', 'imagenes/Certificados_Diplomas/018_certificado_campeon4ta.jpg', 'Constancia de Campeón del Torneo de la Liga Nacional de Robótica en la Cuarta Fecha - Noviembre del 2017')">
+                                <i class="fas fa-robot"></i>
+                                <div class="certificate-item-content">
+                                    <h4>VEX VRC LNR Campeón de la 4ta Fecha</h4>
+                                    <p>Constancia de Campeon del Toreneo de la Liga Nacional de Robotica en la Cuarta
+                                        Fecha</p>
+                                    <span class="cert-date">Noviembre del 2017</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('VEX VRC LNR Campeón de la 4ta Fecha', 'imagenes/Certificados_Diplomas/018_certificado_CampeonTorneo4ta.jpg', 'Campeón del Torneo de la Liga Nacional de Robótica en la Cuarta Fecha - Noviembre del 2017')">
+                                <i class="fas fa-robot"></i>
+                                <div class="certificate-item-content">
+                                    <h4>VEX VRC LNR Campeón de la 4ta Fecha</h4>
+                                    <p>Campeon del Toreneo de la Liga Nacional de Robotica en la Cuarta Fecha</p>
+                                    <span class="cert-date">Noviembre del 2017</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('MUESCIENTEC - SAN JOSE ASUNCION', 'imagenes/Certificados_Diplomas/017_reconocimiento_muscientec.jpg', 'Reconocimiento de participación como Expositor - Septiembre de 2017')">
+                                <i class="fas fa-medal"></i>
+                                <div class="certificate-item-content">
+                                    <h4>MUESCIENTEC - SAN JOSE ASUNCION</h4>
+                                    <p>Reconocimiento de participacion como Expositor</p>
+                                    <span class="cert-date">Septiembre de 2017</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('EXPOTEC - SALE 2017', 'imagenes/Certificados_Diplomas/017_certificado_expotec.jpg', 'Reconocimiento de participación en la EXPOTEC SALE 2017 - Octubre de 2017')">
+                                <i class="fas fa-medal"></i>
+                                <div class="certificate-item-content">
+                                    <h4>EXPOTEC - SALE 2017</h4>
+                                    <p>Reconocimiento de participacion en la EXPOTEC SALE 2017</p>
+                                    <span class="cert-date">Octubre de 2017</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('XIX Olimpiada Nacional De Física', 'imagenes/Certificados_Diplomas/017_certificado_OlimpiadaNacionalFisica.jpg', 'Certificación de participación de las Olimpiadas Nacionales de Física nivel Básico - Julio de 2017')">
+                                <i class="fas fa-medal"></i>
+                                <div class="certificate-item-content">
+                                    <h4>XIX Olimpiada Nacional De Física</h4>
+                                    <p>Certificacion de participacion de las Olimpiadas Nacionales de Fisica nivel
+                                        Basico</p>
+                                    <span class="cert-date">Julio de 2017</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 2018 -->
+                    <div class="timeline-item">
+                        <div class="timeline-year" onclick="toggleCertificates(2018)">
+                            2018
+                            <div class="year-count">8 certificados</div>
+                        </div>
+                        <div class="certificates-list" id="certificates-2018">
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('VEX VRC LNR Campeón de la 6ta Fecha', 'imagenes/Certificados_Diplomas/018_certificado_Campeon6ta.jpg', 'Constancia de Campeón del Torneo de la Liga Nacional de Robótica en la Sexta Fecha - Febrero de 2018')">
+                                <i class="fas fa-robot"></i>
+                                <div class="certificate-item-content">
+                                    <h4>VEX VRC LNR Campeón de la 6ta Fecha</h4>
+                                    <p>Constancia de Campeon del Toreneo de la Liga Nacional de Robotica en la Sexta
+                                        Fecha</p>
+                                    <span class="cert-date">Febrero de 2018</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('VEX VRC LNR Campeón de la 6ta Fecha', 'imagenes/Certificados_Diplomas/018_certificado_CampeonTorneo6ta.jpg', 'Campeón del Torneo de la Liga Nacional de Robótica en la Sexta Fecha - Febrero de 2018')">
+                                <i class="fas fa-robot"></i>
+                                <div class="certificate-item-content">
+                                    <h4>VEX VRC LNR Campeón de la 6ta Fecha</h4>
+                                    <p>Campeon del Toreneo de la Liga Nacional de Robotica en la Sexta Fecha</p>
+                                    <span class="cert-date">Febrero de 2018</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('VEX VRC LNR Excellence Award', 'imagenes/Certificados_Diplomas/018_certificado_Festech_ExcellenceAward.jpg', 'Campeón Excellence Award en la Competencia Nacional de Robótica llevada a cabo en el FESTECHPY 2018 - Marzo de 2018')">
+                                <i class="fas fa-robot"></i>
+                                <div class="certificate-item-content">
+                                    <h4>VEX VRC LNR Excellence Award</h4>
+                                    <p>Campeon Excellence Award en la Competencia Nacional de Robotica llevada a cabo en
+                                        el FESTECHPY 2018</p>
+                                    <span class="cert-date">Marzo de 2018</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('VEX VRC Worlds 2018 Design Award', 'imagenes/Certificados_Diplomas/018_Certificado_MundialVex_DesingAward.jpg', 'Premio Internacional Design Award en el Mundial de Robótica VEX WORLDS 2018 llevada a cabo en Louisville-Kentucky Estados Unidos - Mayo de 2018')">
+                                <i class="fas fa-robot"></i>
+                                <div class="certificate-item-content">
+                                    <h4>VEX VRC Worlds 2018 Design Award</h4>
+                                    <p>Premio Internacional Design Award en el Mundial de Robotica VEX WORLDS 2018
+                                        llevada a cabo en Lousville-Kentuchky Estados Unidos</p>
+                                    <span class="cert-date">Mayo de 2018</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('VEX VRC Temporada 2017/2018', 'imagenes/Certificados_Diplomas/018_certificado_VRC.jpg', 'Certificación de conclusión del curso de Robótica de la temporada 2017/2018 categoría VRC - Mayo de 2018')">
+                                <i class="fas fa-robot"></i>
+                                <div class="certificate-item-content">
+                                    <h4>VEX VRC Temporada 2017/2018</h4>
+                                    <p>Certificacion de conclusion del curso de Robotica de la temporada 2017/2018
+                                        categoria VRC</p>
+                                    <span class="cert-date">Mayo de 2018</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('VEX Robotics Online Challenge', 'imagenes/Certificados_Diplomas/018_certificado_AutodeskStudentExpert.jpg', 'Certificación de Participación en Make It Real CAD Engineering Challenge otorgado por Autodesk - Mayo de 2018')">
+                                <div
+                                    style="display: inline-block; text-align: center; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                                    <div
+                                        style="font-family: 'Arial', sans-serif; font-size: 12px; font-weight: bold; color: #0696D7;">
+                                        <span style="color: #000000;">AUTO</span><span
+                                            style="color: #0696D7;">DESK</span>
+                                    </div>
+                                </div>
+                                <div class="certificate-item-content">
+                                    <h4>VEX Robotics Online Challenge</h4>
+                                    <p>Certificacion de Participacion en Make It Real CAD Engineering Challenge otorgado
+                                        por Autodesk</p>
+                                    <span class="cert-date">Mayo de 2018</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('XIX Olimpiada Nacional De Física', 'imagenes/Certificados_Diplomas/018_certificado_participacion.jpg', 'Certificación de participación de las Olimpiadas Nacionales de Física nivel intermedio - Julio de 2018')">
+                                <i class="fas fa-medal"></i>
+                                <div class="certificate-item-content">
+                                    <h4>XIX Olimpiada Nacional De Física</h4>
+                                    <p>Certificacion de participacion de las Olimpiadas Nacionales de Fisica nivel
+                                        intermedio</p>
+                                    <span class="cert-date">Julio de 2018</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('XIX Olimpiada Nacional De Física Medalla de Honor', 'imagenes/Certificados_Diplomas/018_certtificado_mencionDeHonor.jpg', 'Medalla de Honor en las Olimpiadas Nacionales de Física nivel intermedio - Julio de 2018')">
+                                <i class="fas fa-medal"></i>
+                                <div class="certificate-item-content">
+                                    <h4>XIX Olimpiada Nacional De Física Medalla de Honor</h4>
+                                    <p>Medalla de Honor en las Olimpiadas Nacionales de Fisica nivel intermedio</p>
+                                    <span class="cert-date">Julio de 2018</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 2019 -->
+                    <div class="timeline-item">
+                        <div class="timeline-year" onclick="toggleCertificates(2019)">
+                            2019
+                            <div class="year-count">1 certificado</div>
+                        </div>
+                        <div class="certificates-list" id="certificates-2019">
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Evaluación Práctica de Conducción', 'imagenes/Certificados_Diplomas/019_certificado_EvaluacionPracticaDeConduccion.jpg', 'Constancia de aprobación de la evaluación para la categoría Particular expedido en la ciudad de Lambaré - Diciembre de 2019')">
+                                <i class="fas fa-car"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Evaluación Práctica de Conducción</h4>
+                                    <p>Constancia de aprovacion de la evaluacion para la categoria Particular expedido
+                                        en la ciudad de Lambare</p>
+                                    <span class="cert-date">Diciembre de 2019</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 2020 -->
+                    <div class="timeline-item">
+                        <div class="timeline-year" onclick="toggleCertificates(2020)">
+                            2020
+                            <div class="year-count">2 certificados</div>
+                        </div>
+                        <div class="certificates-list" id="certificates-2020">
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Portugués Básico', 'imagenes/Certificados_Diplomas/020_lang_por_basico.jpg', 'Certificado por aprobación del curso de Portugués Nivel Básico otorgado por el Ilpor - Junio de 2020')">
+                                <i class="fas fa-globe-americas"
+                                    style="color: #FFDF00; font-size: 48px; margin-left: 10px;"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Portugués Básico</h4>
+                                    <p>Certificado por aprobacion del curso de Portugues Nivel Basico otorgado por el
+                                        Ilpor</p>
+                                    <span class="cert-date">Junio de 2020</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Portugués Intermedio', 'imagenes/Certificados_Diplomas/020_lang_por_intermedio.jpg', 'Certificado por aprobación del curso de Portugués Nivel Intermedio otorgado por el Ilpor - Agosto de 2020')">
+                                <i class="fas fa-globe-americas"
+                                    style="color: #FFDF00; font-size: 48px; margin-left: 10px;"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Portugués Intermedio</h4>
+                                    <p>Certificado por aprobacion del curso de Portugues Nivel Intermedio otorgado por
+                                        el Ilpor</p>
+                                    <span class="cert-date">Agosto de 2020</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 2021 -->
+                    <div class="timeline-item">
+                        <div class="timeline-year" onclick="toggleCertificates(2021)">
+                            2021
+                            <div class="year-count">1 certificado</div>
+                        </div>
+                        <div class="certificates-list" id="certificates-2021">
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Google Classroom y Herramientas G suite para estudiantes', 'imagenes/Certificados_Diplomas/021_certificado_googleClassroomYHerramietasGsuiteParaEstudiantes.jpg', 'Certificado por haber aprobado el curso de Google Classroom y Herramientas G suite para estudiantes otorgado por la Facultad de Ingeniería de la Universidad Nacional de Asunción (FIUNA) - Abril de 2021')">
+                                <div
+                                    style="display: inline-block; font-family: 'Arial', sans-serif; font-size: 8px; font-weight: bold; letter-spacing: -0.2px; padding: 4px 6px; background: white; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                                    <span style="color: #4285F4;">G</span>
+                                    <span style="color: #EA4335;">o</span>
+                                    <span style="color: #FBBC05;">o</span>
+                                    <span style="color: #4285F4;">g</span>
+                                    <span style="color: #34A853;">l</span>
+                                    <span style="color: #EA4335;">e</span>
+                                </div>
+                                <div class="certificate-item-content">
+                                    <h4>Google Classroom y Herramientas G suite para estudiantes</h4>
+                                    <p>Certificado por haber aprobado el curso de Google Classroom y Herramientas G
+                                        suite para estudiantes otorgado por la Facultad de Ingenieria de la Universidad
+                                        Nacional de Asunmcion (FIUNA)</p>
+                                    <span class="cert-date">Abril de 2021</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 2022 -->
+                    <div class="timeline-item">
+                        <div class="timeline-year" onclick="toggleCertificates(2022)">
+                            2022
+                            <div class="year-count">1 certificado</div>
+                        </div>
+                        <div class="certificates-list" id="certificates-2022">
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Portugués Avanzado', 'imagenes/Certificados_Diplomas/022_lang_por_avanzado.jpg', 'Certificado por aprobación del curso de Portugués Nivel Avanzado otorgado por el Ilpor - Septiembre de 2022')">
+                                <i class="fas fa-globe-americas"
+                                    style="color: #FFDF00; font-size: 48px; margin-left: 10px;"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Portugués Avanzado</h4>
+                                    <p>Certificado por aprobacion del curso de Portugues Nivel Avanzado otorgado por el
+                                        Ilpor</p>
+                                    <span class="cert-date">Septiembre de 2022</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 2023 -->
+                    <div class="timeline-item">
+                        <div class="timeline-year" onclick="toggleCertificates(2023)">
+                            2023
+                            <div class="year-count">1 certificado</div>
+                        </div>
+                        <div class="certificates-list" id="certificates-2023">
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Charla Soluciones Para el Arranque de Motores Eléctricos', 'imagenes/Certificados_Diplomas/023_certificado_motoresElectricos.jpg', 'Certificado de participación en la charla de Soluciones de Lovato Electric para el Arranque de Motores Eléctricos - Mayo de 2023')">
+                                <i class="fas fa-bolt"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Charla Soluciones Para el Arranque de Motores Eléctricos</h4>
+                                    <p>Certificado de participacion en la charla de Soluciones de Lovato Electric para
+                                        el Arranque de Motroes Electricos</p>
+                                    <span class="cert-date">Mayo de 2023</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 2024 -->
+                    <div class="timeline-item">
+                        <div class="timeline-year" onclick="toggleCertificates(2024)">
+                            2024
+                            <div class="year-count">2 certificados</div>
+                        </div>
+                        <div class="certificates-list" id="certificates-2024">
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Campeones Nasa Space Apps Challenge', 'imagenes/Certificados_Diplomas/024_certificado_NASA_FirstPlace.jpg', 'Campeones nacionales de la competencia de NASA SPACE APPS organizada por la NASA - Octubre de 2024')">
+                                <i class="fas fa-rocket"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Campeones Nasa Space Apps Challenge</h4>
+                                    <p>Campeones nacionales de la competencia de NASA SPACE APPS organizada por la NASA
+                                    </p>
+                                    <span class="cert-date">Octubre de 2024</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Galactic Problem Solver', 'imagenes/Certificados_Diplomas/024_certificado_NASA_GalacticProblemSolver.jpg', 'Reconocimiento por la participación en la solución de problemas galácticos otorgado por la NASA - Octubre de 2024')">
+                                <i class="fas fa-rocket"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Galactic Problem Solver</h4>
+                                    <p>Reconocimiento por la participación en la solucion de problemas galacticos
+                                        otorgado por la NASA</p>
+                                    <span class="cert-date">Octubre de 2024</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 2025 -->
+                    <div class="timeline-item">
+                        <div class="timeline-year" onclick="toggleCertificates(2025)">
+                            2025
+                            <div class="year-count">6 certificados</div>
+                        </div>
+                        <div class="certificates-list" id="certificates-2025">
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Introducción a Python', 'imagenes/Certificados_Diplomas/Certificado CIT LV1 INTRO INTRODUCCIÓN A PYTHON_page-0001.jpg', 'Introducción al lenguaje de programación Python - Junio de 2025')">
+                                <i class="fas fa-laptop-code"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Introducción a Python</h4>
+                                    <p>Introduccion al lenguaje de programacion Python</p>
+                                    <span class="cert-date">Junio de 2025</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Introducción a la Ciberseguridad', 'imagenes/Certificados_Diplomas/Certificado CIT LV2 INTRODUCCIÓN A LA CIBERSEGURIDAD Y A LA SEGURIDAD DE REDES_page-0001.jpg', 'Seguridad informática y protección de datos - Octubre de 2025')">
+                                <i class="fas fa-shield-alt"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Introducción a la Ciberseguridad</h4>
+                                    <p>Seguridad informática y protección de datos</p>
+                                    <span class="cert-date">Octubre de 2025</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Seguridad de Redes y en la Nube', 'imagenes/Certificados_Diplomas/Certificado CIT LV3 INTERMEDIO SEGURIDAD DE REDERS Y EN LA NUBE_page-0001.jpg', 'Protección y mantenimiento de los Datos nivel servidor físico y en la Nube - Agosto de 2025')">
+                                <i class="fas fa-shield-alt"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Seguridad de Redes y en la Nube</h4>
+                                    <p>Protección y mantenimiento de los Datos nivel servidor fisico y en la Nube.</p>
+                                    <span class="cert-date">Agosto de 2025</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Infraestructura de Redes', 'imagenes/Certificados_Diplomas/Certificado CIT LV2 BASICO INFRAESTRUCTURA DE REDES_page-0001.jpg', 'Introducción de las Redes, configuración, mantenimiento e instalación de Redes - Mayo de 2025')">
+                                <i class="fas fa-network-wired"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Infraestructura de Redes</h4>
+                                    <p>Introduccion de las Redes, configuracion, mantenimiento e instalacion de Redes.
+                                    </p>
+                                    <span class="cert-date">Mayo de 2025</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('SUPERVISIÓN Y OPTIMIZACIÓN DE REDES', 'imagenes/Certificados_Diplomas/Certificado CIT LV3 SUPERVISION Y OPTIMIZACION DE REDES_page-0001.jpg', 'Supervisión, mantenimiento, optimización de Redes - Agosto de 2025')">
+                                <i class="fas fa-network-wired"></i>
+                                <div class="certificate-item-content">
+                                    <h4>SUPERVISIÓN Y OPTIMIZACIÓN DE REDES</h4>
+                                    <p>Supervisión, mantenimiento, optimización de Redes</p>
+                                    <span class="cert-date">Agosto de 2025</span>
+                                </div>
+                            </a>
+                            <a href="#" class="certificate-item"
+                                onclick="showCertificate('Automatización y Virtualización de Redes', 'imagenes/Certificados_Diplomas/Certificado CIT LV4 AUTOMATIZACIÓN Y VIRTUALIZACIÓN DE REDES_page-0001.jpg', 'Supervisión, automatización, Virtualización, mantenimiento, optimización de Redes - Octubre de 2025')">
+                                <i class="fas fa-network-wired"></i>
+                                <div class="certificate-item-content">
+                                    <h4>Automatización y Virtualización de Redes</h4>
+                                    <p>Supervisión, automatización, Virtualización, mantenimiento, optimización de Redes
+                                    </p>
+                                    <span class="cert-date">Octubre de 2025</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Gabriel Park. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Función para alternar certificados al hacer clic
+        function toggleCertificates(year) {
+            // Cerrar todos los demás
+            const allLists = document.querySelectorAll('.certificates-list');
+            allLists.forEach(list => {
+                if (list.id !== `certificates-${year}`) {
+                    list.classList.remove('active');
+                }
+            });
+
+            // Alternar el actual
+            const list = document.getElementById(`certificates-${year}`);
+            if (list) {
+                list.classList.toggle('active');
+            }
+        }
+
+        // Cerrar listas al hacer clic fuera
+        document.addEventListener('click', function (event) {
+            if (!event.target.closest('.timeline-year') && !event.target.closest('.certificates-list')) {
+                const allLists = document.querySelectorAll('.certificates-list');
+                allLists.forEach(list => {
+                    list.classList.remove('active');
+                });
+            }
+        });
+
+        // Funciones para el modal de certificados
+        function showCertificate(title, imageSrc, description) {
+            const modal = document.getElementById('certificateModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalDescription = document.getElementById('modalDescription');
+
+            // Evitar el comportamiento por defecto del enlace
+            event.preventDefault();
+
+            // Cerrar primero cualquier lista de certificados abierta
+            const allLists = document.querySelectorAll('.certificates-list');
+            allLists.forEach(list => {
+                list.classList.remove('active');
+            });
+
+            // Configurar el contenido del modal
+            modalImage.src = imageSrc;
+            modalImage.alt = title;
+            modalDescription.innerHTML = `<h3>${title}</h3><p>${description}</p>`;
+
+            // Mostrar el modal
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden"; // Prevenir scroll
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('certificateModal');
+            modal.style.display = "none";
+            document.body.style.overflow = "auto"; // Restaurar scroll
+        }
+
+        // Cerrar modal al hacer clic fuera del contenido
+        window.onclick = function (event) {
+            const modal = document.getElementById('certificateModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Cerrar modal con tecla ESC
+        document.addEventListener('keydown', function (event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+
+</html>
